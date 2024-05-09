@@ -43,7 +43,15 @@ export const userLogin = createAsyncThunk(loginUrl, async (user, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.response.data);
   }
 });
-
+export const userLogout = createAsyncThunk("user/logout", async (_, thunkAPI) => {
+  try {
+    localStorage.clear();
+    return null;
+  } catch (error) {
+    console.error("Error logging out:", error);
+    return thunkAPI.rejectWithValue("Error logging out");
+  }
+});
 const initialState = {
   user: null,
   loading: false,
@@ -92,6 +100,10 @@ export const userSlice = createSlice({
       state.error = action.payload.errors;
       state.user = null;
       localStorage.clear();
+    });
+    builder.addCase(userLogout.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
     });
   }
 })

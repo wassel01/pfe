@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 const SingUp = () => {
-  const [email, setEmail] = useState("email");
-  const [fullName, setFullName] = useState("fukk");
-  const [password, setPassword] = useState("12345");
-  const [adresse, setAdresse] = useState("test");
-  const [telephone, setTelephone] = useState(1234565);
+  const [email, setEmail] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [password, setPassword] = useState("");
+  const [adresse, setAdresse] = useState("");
+  const [telephone, setTelephone] = useState("");
   
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
@@ -64,7 +64,7 @@ const SingUp = () => {
         </Button>
       </Form>
       
-      <p>do you have a count ?</p>
+      <p>do you have a account ?</p>
       <Link to="/login">
         <p>go to login</p>
       </Link>
